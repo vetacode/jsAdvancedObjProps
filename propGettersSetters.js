@@ -28,3 +28,22 @@ console.log(user.fullName); // Abi Abigail
 user.fullName = 'Alice Wonder';
 console.log(user.firstName);
 console.log(user.lastName);
+
+//ACCESSOR DESCRIPTORS
+let user2 = {
+  first: 'Untung',
+  last: 'Selalu',
+};
+
+Object.defineProperty(user2, 'full', {
+  get() {
+    return this.first + ' ' + this.last;
+  },
+
+  set(value) {
+    [this.first, this.last] = value.split(' ');
+  },
+});
+
+console.log(user2.full); //Untung Selalu
+for (let key in user2) console.log(key);
