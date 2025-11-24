@@ -100,3 +100,8 @@ Object.defineProperties(user, {
   surname: { value: 'Smith', writable: false },
   // ...
 });
+
+//Object.getOwnPropertyDescriptors() + Object.defineProperties()
+//TO CLONE OBJ PROPERLY WITH ALL THE DESCRIPTORS, including symbolic and non-enumerable
+let obj = {};
+let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
