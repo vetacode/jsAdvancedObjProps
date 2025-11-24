@@ -82,3 +82,21 @@ Object.defineProperty(user5, 'name', {
 // user5.name = 'Pete';
 // delete user5.name;
 // Object.defineProperty(user5, 'name', { value: 'Pete' });
+
+//NOTE: The only attribute change possible: writable true → false (but its not vice versa)
+
+//DEFINE PROPS ALTOGETHER with Object.defineProperties
+//SYNTAX:
+/*
+Object.defineProperties(obj, {
+  prop1: descriptor1,
+  prop2: descriptor2
+  // ...
+});
+*/
+
+Object.defineProperties(user, {
+  name: { value: 'John', writable: false },
+  surname: { value: 'Smith', writable: false },
+  // ...
+});
