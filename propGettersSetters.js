@@ -57,3 +57,22 @@ for (let key in user2) console.log(key);
 
 //   value: 2,
 // });
+
+//SMARTER getters/setters
+let cust = {
+  get name() {
+    return this._name;
+  },
+  set name(value) {
+    if (value.length < 4) {
+      console.log('Nama terlalu pendek, minimal 4 karakter!');
+      return;
+    }
+    this._name = value;
+  },
+};
+
+cust.name = 'Pete';
+console.log(cust.name);
+cust.name = 'Lia'; //nama terlalu pendek
+console.log(cust.name);
