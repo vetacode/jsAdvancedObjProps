@@ -51,3 +51,18 @@ Object.defineProperty(user3, 'toString', {
 // Now our toString disappears:
 for (let key in user3) console.log(key); // name
 console.log(Object.keys(user3)); //also excluded from Object.keys()
+
+//NON-CONFIGURABLE
+//Cannot assign delete obj.prop
+
+let user4 = {
+  name: 'John',
+};
+
+Object.defineProperty(user4, 'name', {
+  configurable: false,
+});
+
+user4.name = 'Pete'; // works fine, coz writable is true
+console.log(user4); //Pete
+// delete user4.name; // Error coz configurable is false
