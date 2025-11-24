@@ -47,3 +47,13 @@ Object.defineProperty(user2, 'full', {
 
 console.log(user2.full); //Untung Selalu
 for (let key in user2) console.log(key);
+
+//NOTE: ERROR if we try to assign props on getters or setters
+// Error: Invalid property descriptor.
+// Object.defineProperty({}, 'prop', {
+//   get() {
+//     return 1;
+//   },
+
+//   value: 2,
+// });
