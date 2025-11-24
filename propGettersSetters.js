@@ -1,6 +1,15 @@
 //2 KIND OF OBJECT PROPERTIES: DATA PROPERTIES AND ACCESSOR PROPERTY
 
-//GETTERS AND SETTERS
+//GETTERS
+//Berguna saat kita ingin membaca nilai yang dihitung otomatis
+//contoh: user.age, user.fullName, user.status
+
+//SETTERS
+//BERGUNA saat kita:
+// 1. ingin memvalidasi data sebelum disimpan
+// 2. ingin menjalankan logic otomatis
+// 3. ingin menjaga data internal tetap bersih
+
 let obj = {
   get propName() {
     // getter, the code executed on getting obj.propName
@@ -76,3 +85,35 @@ cust.name = 'Pete';
 console.log(cust.name);
 cust.name = 'Lia'; //nama terlalu pendek
 console.log(cust.name);
+console.log(cust._name);
+
+//Using for compatibility
+function User(name, birthday) {
+  this.name = name;
+  this.birthday = birthday;
+  Object.defineProperty(this, 'age', {
+    get() {
+      const today = new Date();
+      const thisYearsBirthday = new Date(
+        today.getFullYear(),
+        this.birthday.getMonth(),
+        this.birthday.getDate()
+      );
+      let age = today.getFullYear() - this.birthday.getFullYear();
+      if (today < thisYearsBirthday) age--;
+      return age;
+    },
+  });
+}
+
+let vet = new User('Vetacode', new Date(1986, 10, 26));
+
+console.log(vet.name);
+console.log(
+  vet.birthday.toLocaleDateString('id-ID', {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric',
+  })
+);
+console.log(vet.age);
