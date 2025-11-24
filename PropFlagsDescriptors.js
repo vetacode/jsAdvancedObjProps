@@ -20,8 +20,8 @@ console.log(JSON.stringify(descriptor, null, 2));
 */
 //TO CHANGE FLAGS:
 //SYNTAX: Object.defineProperty(obj, propertyName, descriptor)
-//READ-ONLY
 
+//READ-ONLY
 let user2 = {
   name: 'John',
 };
@@ -35,4 +35,4 @@ Object.defineProperty(user2, 'name', {
 // user2.name = 'Pete'; //ga ngaruh coz udh read-only
 console.log(user2); //tetap {name: 'John'}
 
-//
+//NON-ENUMERABLE
