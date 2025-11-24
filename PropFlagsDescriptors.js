@@ -66,3 +66,19 @@ Object.defineProperty(user4, 'name', {
 user4.name = 'Pete'; // works fine, coz writable is true
 console.log(user4); //Pete
 // delete user4.name; // Error coz configurable is false
+
+//CAN MAKE FOREVER SEALED: like Math.PI
+let user5 = {
+  name: 'John',
+};
+
+Object.defineProperty(user5, 'name', {
+  writable: false,
+  configurable: false,
+});
+
+// won't be able to change user5.name or its flags
+// all this won't work:
+// user5.name = 'Pete';
+// delete user5.name;
+// Object.defineProperty(user5, 'name', { value: 'Pete' });
