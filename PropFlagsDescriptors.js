@@ -105,3 +105,19 @@ Object.defineProperties(user, {
 //TO CLONE OBJ PROPERLY WITH ALL THE DESCRIPTORS, including symbolic and non-enumerable
 let obj = {};
 let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
+
+//Sealing an object globally
+/**
+Object.preventExtensions(obj): Forbids the addition of new properties to the object.
+
+Object.seal(obj): Forbids adding/removing of properties. Sets configurable: false for all existing properties.
+
+Object.freeze(obj): Forbids adding/removing/changing of properties. Sets configurable: false, writable: false for all existing properties.
+And also there are tests for them.
+
+Object.isExtensible(obj): Returns false if adding properties is forbidden, otherwise true.
+
+Object.isSealed(obj): Returns true if adding/removing properties is forbidden, and all existing properties have configurable: false.
+
+Object.isFrozen(obj): Returns true if adding/removing/changing properties is forbidden, and all current properties are configurable: false, writable: false.
+ */
