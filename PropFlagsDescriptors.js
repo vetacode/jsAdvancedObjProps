@@ -36,3 +36,18 @@ Object.defineProperty(user2, 'name', {
 console.log(user2); //tetap {name: 'John'}
 
 //NON-ENUMERABLE
+let user3 = {
+  name: 'John',
+  toString() {
+    return this.name;
+  },
+};
+
+Object.defineProperty(user3, 'toString', {
+  // enumerable: true,
+  enumerable: false,
+});
+
+// Now our toString disappears:
+for (let key in user3) console.log(key); // name
+console.log(Object.keys(user3)); //also excluded from Object.keys()
